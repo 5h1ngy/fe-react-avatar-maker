@@ -51,18 +51,19 @@ interface ColorModeButtonProps extends Omit<IconButtonProps, "aria-label"> { }
 
 interface ColorModeButtonExtendedProps {
   variant: ConditionalValue<"outline" | "line" | "subtle" | "plain" | "enclosed" | undefined>;
+  size: ConditionalValue<'sm' | 'md' | 'lg'>;
 }
 
 // Componente esteso di bottone per il cambio della modalità colore con controllo segmentato
 export const ColorModeButtonExtended = function ColorModeButtonExtended(props: ColorModeButtonExtendedProps) {
   const { toggleColorMode, colorMode } = useColorMode();
-  const { variant } = props;
+  const { variant, size } = props;
 
   return (
     // Usa ClientOnly per assicurarsi che il componente venga renderizzato solo sul client
     <ClientOnly fallback={<Skeleton boxSize="8" />}>
 
-      <Tabs.Root key={crypto.randomUUID()} defaultValue={colorMode} variant={variant} onValueChange={toggleColorMode}
+      <Tabs.Root key={crypto.randomUUID()} defaultValue={colorMode} variant={variant} size={size} onValueChange={toggleColorMode}
       // 'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink' | 'accent'
       // colorPalette={'red'}
       >
