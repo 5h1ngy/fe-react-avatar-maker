@@ -1,26 +1,17 @@
-import { NavLink, useNavigate } from "react-router";
-import { useLocation } from 'react-router-dom';
+import { NavLink } from "react-router";
 
 import { Flex } from "@chakra-ui/react"
 import { Spacer } from "@chakra-ui/react"
-import { Tabs, Image } from "@chakra-ui/react"
+import { Image } from "@chakra-ui/react"
 import { Text } from "@chakra-ui/react"
 
 import { Toaster } from "@/components/Chakra/toaster"
 import { ColorModeButtonExtended } from "@/components/Chakra/color-mode"
-import { ComponentProps, NavbarSubItem } from "./component.types";
+import { ComponentProps } from "./component.types";
 
-function findMatchingNavbarValue(location: string, items: NavbarSubItem[]): string | null {
-    const locationBase = location.split('/')[1];
-    const matchedItem = items.find(item => locationBase === item.value.split('/')[1]);
-
-    return matchedItem ? matchedItem.value : null;
-}
 
 export default function Component(props: ComponentProps) {
-    const { children, navbarItems, navbarSubItems, logo, decorationBody } = props
-    const location = useLocation();
-    const navigate = useNavigate();
+    const { children, navbarItems, logo, decorationBody } = props
 
     const Logo: React.FC = () => logo &&
         <Image src={logo} width={'42px'} />
@@ -57,28 +48,6 @@ export default function Component(props: ComponentProps) {
 
             {/** ColorMode button (custom) */}
             <ColorModeButtonExtended variant="enclosed" size={"sm"} />
-        </Flex>
-
-        <Flex wrap={"wrap"} direction={"row"} width={'100%'}
-            gapX={'1rem'} justifyContent={"start"} justifyItems={"center"} alignContent={'center'} alignItems={'center'}
-            paddingX={'10%'}
-        >
-            <Tabs.Root key={crypto.randomUUID()}
-                defaultValue={findMatchingNavbarValue(location.pathname, navbarSubItems)}
-                variant={"line"}
-                size={"sm"}
-                onValueChange={(details: { value: string }) => {
-                    navigate(details.value)
-                }}
-            >
-                <Tabs.List>
-                    {navbarSubItems.map(item => (
-                        <Tabs.Trigger key={crypto.randomUUID()} value={item.value}>
-                            {item.icon} {item.label}
-                        </Tabs.Trigger>
-                    ))}
-                </Tabs.List>
-            </ Tabs.Root>
         </Flex>
 
     </Flex>

@@ -1,4 +1,4 @@
-# **fe-react-anime-watch**
+# **fe-react-avatar-maker**
 
 <p align="center">
   <img src="./assets/logo.png" alt="logo" width="512">
@@ -12,7 +12,7 @@
 
 A modern React application to track and manage your watched anime. Built with Chakra UI for a sleek and accessible design system, Redux Toolkit for robust state management, and Storybook for component documentation and testing. Developed using TypeScript and Vite for optimal performance and scalability.
 
-![fe-react-anime-watch Demo](./assets/thumbnail.png) <!-- Placeholder: Replace with actual image -->
+![fe-react-avatar-maker Demo](./assets/thumbnail.png) <!-- Placeholder: Replace with actual image -->
 
 ## **Features**
 
@@ -41,8 +41,8 @@ Ensure you have the following installed:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/5h1ngy/fe-react-anime-watch.git
-   cd fe-react-anime-watch
+   git clone https://github.com/5h1ngy/fe-react-avatar-maker.git
+   cd fe-react-avatar-maker
    ```
 
 2. **Install dependencies**:
