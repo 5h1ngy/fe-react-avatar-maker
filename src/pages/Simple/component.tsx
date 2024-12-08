@@ -43,7 +43,7 @@ export default function Component(props: ComponentProps) {
 
     const Body: React.FC = () => <Flex direction={"column"} zIndex={'5'} marginTop={'4.8rem'}
         position={'relative'}
-        paddingX={{ base: "5%", sm: "4rem", md: "4rem", lg: '25%', xl: '25%', "2xl": '25%' }} gap={'3rem'}
+        paddingX={{ base: "5%", sm: "4rem", md: "4rem", lg: '10%', xl: '10%', "2xl": '10%' }} gap={'3rem'}
         paddingY={'4rem'}
         minHeight={'98.2vh'}
         borderYWidth="1px"

@@ -98,6 +98,29 @@ export interface State {
     selectedOptions: Partial<SelectedOptions>,
 }
 
+const popularHexColors: string[] = [
+    "#FFFFFF", // Bianco
+    "#000000", // Nero
+    "#FF0000", // Rosso
+    "#00FF00", // Verde
+    "#0000FF", // Blu
+    "#FFFF00", // Giallo
+    "#FFA500", // Arancione
+    "#800080", // Viola
+    "#FFC0CB", // Rosa
+    "#808080", // Grigio
+    "#ADD8E6", // Azzurro chiaro
+    "#800000", // Marrone scuro
+    "#00FFFF", // Ciano
+    "#FFD700", // Oro
+    "#A52A2A", // Marrone
+    "#7FFF00", // Verde Chartreuse
+    "#F0E68C", // Khaki
+    "#D2691E", // Cioccolato
+    "#8A2BE2", // Blu Violetto
+    "#FF6347", // Rosso Tomate
+];
+
 const slice = createSlice({
     name: 'container/make',
     initialState: {
@@ -108,7 +131,7 @@ const slice = createSlice({
             // scale?: number;
             // radius?: number;
             // size?: number;
-            // backgroundColor?: string[];
+            backgroundColor: popularHexColors,
             backgroundType: ['solid', 'gradientLinear'],
             // backgroundRotation?: number[];
             // translateX?: number;
@@ -119,12 +142,12 @@ const slice = createSlice({
         optionsStyle: {
             style: ['circle', 'default'],
             base: ['default'],
-            // backgroundColor?: string[];
+            backgroundColor: popularHexColors,
         },
         optionsColors: {
-            // hairColor?: string[];
-            // skinColor?: string[];
-            // facialHairColor?: string[];
+            hairColor: popularHexColors,
+            skinColor: popularHexColors,
+            facialHairColor: popularHexColors,
         },
         optionsFace: {
             mouth: ['concerned', 'default', 'disbelief', 'eating', 'grimace', 'sad', 'screamOpen', 'serious', 'smile', 'tongue', 'twinkle', 'vomit'],
@@ -141,17 +164,27 @@ const slice = createSlice({
             accessories: ['kurt', 'prescription01', 'prescription02', 'round', 'sunglasses', 'wayfarers', 'eyepatch'],
             // accessoriesProbability?: number;
             clothingGraphic: ['bat', 'bear', 'cumbia', 'deer', 'diamond', 'hola', 'pizza', 'resist', 'skull', 'skullOutline'],
-            // accessoriesColor?: string[];
-            // clothesColor?: stri
-            // hatColor?: string[];
+            accessoriesColor: popularHexColors,
+            clothesColor: popularHexColors,
+            hatColor: popularHexColors,
         },
-        selectedOptions: {
-        },
+        selectedOptions: {},
     } as State,
     reducers: {
         updateOption: (state, action) => {
-            state.selectedOptions[action.payload.id as OptionKeys] = action.payload.values
-        }
+            const value = action.payload.value;
+
+            // Regex per verificare se il valore è un colore esadecimale
+            const hexColorRegex = /^#[0-9A-Fa-f]{6}$/;
+
+            if (hexColorRegex.test(value)) {
+                // Se è un colore esadecimale, rimuovi il primo carattere (#)
+                state.selectedOptions[action.payload.id as OptionKeys] = [value.slice(1)];
+            } else {
+                // Altrimenti, assegna il valore normalmente
+                state.selectedOptions[action.payload.id as OptionKeys] = [value];
+            }
+        },
         // addItem: (state, action) => {
         //     state.occurrences.push(action.payload);
         // },

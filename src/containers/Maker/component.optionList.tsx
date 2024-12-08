@@ -12,7 +12,7 @@ interface SectionProps {
 }
 
 const OptionsSection: React.FC<SectionProps> = ({ title, options }) => (
-  <Flex direction={'column'} gapY={"1rem"}>
+  <Flex direction={'column'} gapY={"1rem"} maxWidth={'40rem'}>
     <Text textStyle="xl">{title}</Text>
     <Flex
       wrap={"wrap"}
@@ -32,7 +32,7 @@ const OptionsSection: React.FC<SectionProps> = ({ title, options }) => (
 );
 
 const Component: React.FC<Bind> = ({ state }) => (
-  <Flex wrap={'wrap'} gap={'1rem'}>
+  <Flex wrap={'wrap'} gap={'1rem'}  width={'60%'} >
     <OptionsSection title="Basic" options={state.optionsBasic} />
     <OptionsSection title="Styles" options={state.optionsStyle} />
     <OptionsSection title="Colors" options={state.optionsColors} />

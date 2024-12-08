@@ -17,12 +17,12 @@ const Component: React.FC<Bind & { id: string, list: Array<string> }> = ({ actio
   function onTypeChange(args: any) {
     const { value: type } = args as { items: typeof Proxy[]; value: string[] };
 
-    const values = type
-    actions.updateOption({ id, values })
+    const value = type[0]
+    actions.updateOption({ id, value })
   }
 
   return <SelectRoot
-    width={'12rem'} size={'sm'} multiple collection={listCollection}
+    width={'12rem'} size={'sm'} collection={listCollection}
     defaultValue={state.selectedOptions[id as OptionKeys] || undefined}
     onValueChange={onTypeChange}
   >
