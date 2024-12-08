@@ -1,0 +1,50 @@
+import React from 'react';
+import { createListCollection } from '@chakra-ui/react';
+
+import { _parseKey } from '@/shared/utils';
+import { OptionKeys } from '@/store/containerMaker';
+import { SelectContent, SelectItem, SelectLabel, SelectRoot, SelectTrigger, SelectValueText } from "@/components/Chakra/select"
+
+import wicthContainer, { Bind } from "./container";
+
+const Component: React.FC<Bind & { id: string, list: Array<string> }> = ({ actions, state, id, list }) => {
+  const placeholder = _parseKey(id)
+
+  const listCollection = createListCollection({
+    items: list.map(element => ({ label: _parseKey(element), value: element }))
+  });
+
+  function onTypeChange(args: any) {
+    const { value: type } = args as { items: typeof Proxy[]; value: string[] };
+
+    const values = type
+    actions.updateOption({ id, values })
+  }
+
+  return <SelectRoot
+    width={'12rem'} size={'sm'} multiple collection={listCollection}
+    defaultValue={state.selectedOptions[id as OptionKeys] || undefined}
+    onValueChange={onTypeChange}
+  >
+
+    {/* Title */}
+    <SelectLabel>{placeholder}</SelectLabel>
+
+    {/* Placeholder */}
+    <SelectTrigger>
+      <SelectValueText placeholder={state.selectedOptions[id as OptionKeys]?.join(', ') || 'Select'} />
+    </SelectTrigger>
+
+    {/* Items */}
+    <SelectContent>
+      {listCollection.items.map((item) =>
+        <SelectItem item={item} key={item.value}>
+          {item.label}
+        </SelectItem>
+      )}
+    </SelectContent>
+
+  </SelectRoot>
+}
+
+export default wicthContainer(Component);

@@ -11,21 +11,10 @@ import { ComponentProps } from "./component.types";
 
 
 export default function Component(props: ComponentProps) {
-    const { children, navbarItems, logo, decorationBody } = props
+    const { children, navbarItems, logo } = props
 
     const Logo: React.FC = () => logo &&
         <Image src={logo} width={'42px'} />
-
-    const DecorationBody: React.FC = () => decorationBody &&
-        <Image
-            src={decorationBody}
-            position={'fixed'}
-            transform="scaleX(-1)"
-            zIndex={-1}
-            right={0}
-            bottom={0}
-            display={{ base: "none", sm: "none", md: "none", lg: 'none', xl: 'block', "2xl": 'block' }}
-        />;
 
     const Header: React.FC = () => <Flex wrap={"wrap"} position={"fixed"} zIndex={'2'} width={"100%"} top={0}
         backgroundColor={"white"} _dark={{ backgroundColor: "black" }}
@@ -34,7 +23,7 @@ export default function Component(props: ComponentProps) {
 
         <Flex wrap={"wrap"} direction={"row"} width={'100%'}
             gapX={'1rem'} justifyContent={"center"} justifyItems={"center"} alignContent={'center'} alignItems={'center'}
-            paddingX={'5%'} paddingTop={'1rem'}
+            paddingX={'5%'} paddingTop={'1rem'} paddingBottom={'1rem'}
         >
             <Logo />
 
@@ -52,15 +41,14 @@ export default function Component(props: ComponentProps) {
 
     </Flex>
 
-    const Body: React.FC = () => <Flex direction={"column"} zIndex={'1'} marginTop={'5.4rem'}
-        paddingX={{ base: "5%", sm: "4rem", md: "4rem", lg: '4rem', xl: '15%', "2xl": '15%' }} gap={'3rem'}
+    const Body: React.FC = () => <Flex direction={"column"} zIndex={'5'} marginTop={'4.8rem'}
+        position={'relative'}
+        paddingX={{ base: "5%", sm: "4rem", md: "4rem", lg: '25%', xl: '25%', "2xl": '25%' }} gap={'3rem'}
         paddingY={'4rem'}
-        minHeight={'90.5vh'}
+        minHeight={'98.2vh'}
         borderYWidth="1px"
         backgroundColor={"gray.100"} _dark={{ backgroundColor: "gray.900" }}
     >
-
-        <DecorationBody />
 
         {children !== undefined && children}
 

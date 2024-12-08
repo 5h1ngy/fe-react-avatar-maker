@@ -9,5 +9,4 @@ export interface ComponentProps {
     children?: ReactElement
     navbarItems: Array<NavbarItem>
     logo: string | null
-    decorationBody: string | null
 }

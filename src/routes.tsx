@@ -11,7 +11,6 @@ const routes: RouteObject[] = [
         path: "/",
         element: withDynamicImport('Simple', <Loading />).pages({
             logo: "/logo.png",
-            decorationBody: "/decoration.png",
             children: <Outlet />,
             navbarItems: [
                 { icon: <HiHome />, label: "About", value: '/about' },
