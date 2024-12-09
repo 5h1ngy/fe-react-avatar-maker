@@ -4,126 +4,120 @@
   <img src="./assets/logo.png" alt="logo" width="512">
 </p>
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](#)
 ![Node.js](https://img.shields.io/badge/node-%3E%3D20.18.0-green)
 ![Yarn](https://img.shields.io/badge/yarn-%3E%3D4.5.1-green)
 
-> **Version**: `1.0.0`
+A modern React application built with TypeScript and Chakra UI to create and manage avatars in an intuitive and interactive way. The app is focused on performance, accessibility, and maintainability.
 
-A modern React application to track and manage your watched anime. Built with Chakra UI for a sleek and accessible design system, Redux Toolkit for robust state management, and Storybook for component documentation and testing. Developed using TypeScript and Vite for optimal performance and scalability.
+<p align="center">
+   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+      <img src="./assets/preview_desktop.png" alt="Preview Desktop Light" style="height: 150px; object-fit: contain;">
+      <img src="./assets/preview_mobile.png" alt="Preview Mobile Light" style="height: 150px; object-fit: contain;">
+      <img src="./assets/preview_desktop_dark.png" alt="Preview Desktop Dark" style="height: 150px; object-fit: contain;">
+      <img src="./assets/preview_mobile_dark.png" alt="Preview Mobile Dark" style="height: 150px; object-fit: contain;">
+   </div>
+</p>
 
-![fe-react-avatar-maker Demo](./assets/thumbnail.png) <!-- Placeholder: Replace with actual image -->
+## **Table of Contents**
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Key Dependencies](#key-dependencies)
+- [Testing](#testing)
+- [License](#license)
+- [Contributing](#contributing)
+- [Contact](#contact)
+
+## **Introduction**
+
+**fe-react-avatar-maker** is designed to provide a seamless user experience for creating and customizing avatars. The app leverages **React**, **TypeScript**, and **Redux Toolkit** to ensure scalability, maintainability, and robust state management.
 
 ## **Features**
 
-✅ Track and manage anime you have watched.  
-✅ Search for anime by title and filter results.  
-✅ Create a custom anime watchlist.  
-✅ Pagination for anime results.  
-✅ Dynamic theming with **next-themes** and **Chakra UI**.  
-✅ Integrated state management using **Redux Toolkit**.  
-✅ Type-safe and performant with **TypeScript**.  
-✅ Modular, scalable routing powered by **React Router v7**.  
-✅ Animations with **GSAP** for engaging user experience.  
-✅ Built-in Storybook for documenting and testing components.
+- ✅ Create custom avatars with advanced design options.  
+- ✅ Dynamic theming with **next-themes** and **Chakra UI**.  
+- ✅ Integrated state management using **Redux Toolkit**.  
+- ✅ Type-safe and performant with **TypeScript**.  
+- ✅ Modular routing powered by **React Router v7**.  
+- ✅ Engaging animations with **GSAP**.  
+- ✅ Built-in Storybook for component documentation and testing.
 
-## **Installation**
+## **Requirements**
 
-### Prerequisites
-
-Ensure you have the following installed:
+Ensure the following are installed on your system:
 
 - **Node.js**: `>= 20.18.0`
 - **Yarn**: `>= 4.5.1`
 
-### Installation Steps
+## **Installation**
 
-1. **Clone the repository**:
+### Steps
 
+1. Clone the repository:
    ```bash
    git clone https://github.com/5h1ngy/fe-react-avatar-maker.git
    cd fe-react-avatar-maker
    ```
 
-2. **Install dependencies**:
-
+2. Install dependencies:
    ```bash
    yarn install
    ```
 
-3. **Run the application**:
-
-   #### Development Mode:
+3. Start the development server:
    ```bash
    yarn dev
    ```
 
-   #### Build and Preview for Production:
-   ```bash
-   yarn build
-   yarn start
-   ```
+For a production build:
+```bash
+yarn build
+yarn start
+```
 
 ## **Usage**
 
-The application allows users to explore a vast library of anime, create watchlists, and access details about their favorite shows.
+### Core Features:
+- **Custom Avatar Creation**: Design unique avatars with an intuitive interface.
+- **Dynamic Theming**: Switch between light and dark themes with **next-themes** and **Chakra UI**.
+- **State Management**: Manage data seamlessly using **Redux Toolkit**.
 
-### Features at a Glance:
-- **Search**: Locate anime by title or tags.
-- **Pagination**: Browse results efficiently with pagination.
-- **Dynamic Theming**: Switch between light and dark themes.
-- **Watchlist**: Save and manage your favorite anime.
-
-### API Integration
-The app communicates with a backend (e.g., `be-node-anime-watch`) for fetching anime data.
-
-### Deployment
-The app is built using **Vite** for blazing-fast performance. For deployment, use:
-
-```bash
-yarn build
-```
+This project serves as a comprehensive tool for applications needing personalized avatars with responsive design.
 
 ## **Project Structure**
 
 ```plaintext
 src/
-├── assets/          # Static assets (e.g., images, icons)
-├── components/      # Reusable UI components (Cards, Buttons, etc.)
-├── pages/           # Page-level components (Home, Details)
-├── store/           # Redux Toolkit slices and state management
-├── routes/          # Route definitions and loaders
-├── providers/       # Application providers (Theme, Helmet)
-├── hocs/            # Higher-order components (e.g., withRouter)
-├── styles/          # Global and theme-specific styles
-├── App.tsx          # Main application component
-└── main.tsx         # Entry point for the app
+├── assets/          # Static assets (images, icons, etc.)
+├── components/      # Reusable components
+├── pages/           # Page-level components
+├── store/           # State management (e.g., Redux slices)
+├── routes/          # Routing configurations
+├── styles/          # Global and component styles
+├── App.tsx          # Main app entry point
+└── main.tsx         # Application bootstrap file
 ```
 
 ## **Key Dependencies**
 
-### Runtime
 - **React**: Core library for building user interfaces.
-- **Chakra UI**: Component library for a modern design system.
-- **Redux Toolkit**: State management with minimal boilerplate.
-- **GSAP**: Animation library for scroll-based and interactive animations.
-- **React Router DOM**: Routing solution with loader and data management.
-- **next-themes**: Simple theme management.
+- **Chakra UI**: Provides a sleek and accessible design system.
+- **Redux Toolkit**: Manages state efficiently.
+- **GSAP**: Powers animations for a dynamic user experience.
+- **React Router DOM**: Handles routing seamlessly.
+- **TypeScript**: Ensures type safety and scalability.
 
-### Development
-- **TypeScript**: Typed JavaScript for scalable and maintainable code.
-- **Storybook**: Component library documentation and testing.
-- **Vite**: Development server and bundler.
-
-## **Animation**
-
-Animations are powered by **GSAP**. Example use cases:
-- Cards animate into view on scroll using `ScrollTrigger`.
-- Smooth transitions between pages.
+For detailed dependency versions, see the [package.json](./package.json).
 
 ## **Testing**
 
-Storybook provides an interactive environment for testing individual components. To start Storybook:
+Use **Storybook** to test and document components interactively. Start Storybook:
 
 ```bash
 yarn storybook
@@ -131,8 +125,9 @@ yarn storybook
 
 ## **License**
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for full details.
+This project is licensed under the [MIT License](./LICENSE).
 
-## **Author**
+## **Contact**
 
-Project created by [5h1ngy](https://github.com/5h1ngy).
+- **Repository**: [https://github.com/5h1ngy/fe-react-avatar-maker](https://github.com/5h1ngy/fe-react-avatar-maker)  
+- **Author**: [5h1ngy](https://github.com/5h1ngy)  

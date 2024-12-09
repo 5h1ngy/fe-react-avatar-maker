@@ -18,13 +18,15 @@ const meta: Meta<ComponentProps> = {
     navbarItems: [
       { label: 'Home', value: '/' },
       { label: 'About', value: '/about' },
+      { label: 'Contact', value: '/contact' }, // Aggiunto un esempio extra
     ],
-    navbarSubItems: [
-      { label: 'Sub 1', value: '/sub1', icon: '🔗' },
-      { label: 'Sub 2', value: '/sub2', icon: '🔗' },
-    ],
-    logo: 'https://via.placeholder.com/150',
-    decorationBody: 'https://via.placeholder.com/300',
+    logo: 'https://via.placeholder.com/42', // Modificato per corrispondere al componente
+    children: (
+      <>
+        <p>Welcome to the landing page!</p>
+        <p>Explore our features and learn more about us.</p>
+      </>
+    ),
   },
 };
 

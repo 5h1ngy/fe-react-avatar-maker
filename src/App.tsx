@@ -12,6 +12,8 @@ const App: React.FC = () => {
 
     const imgUrl = new URL('/public/logo.png', import.meta.url).href
 
+    console.warn("env", import.meta.env);
+
     return <Provider store={store}>
         <ThemeProvider>
             <HelmetProvider>

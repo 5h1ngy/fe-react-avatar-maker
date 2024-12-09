@@ -29,7 +29,7 @@ export default function Component(props: ComponentProps) {
 
             {navbarItems.map(item => (
                 <NavLink key={crypto.randomUUID()} to={item.value} end>
-                    <Text textStyle="md">{item.label}</Text>
+                    <Text textStyle="xl" fontWeight="bold">{item.label}</Text>
                 </NavLink>
             ))}
 

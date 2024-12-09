@@ -87,7 +87,7 @@ const Component: React.FC<ComponentProps & Bind> = ({ state, avatar }) => {
   };
 
   const downloadJSON = () => {
-    const json = JSON.stringify(state.selectedOptions, null, 2); // Esporta le opzioni selezionate
+    const json = JSON.stringify(state, null, 2); // Esporta le opzioni selezionate
     const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
 
@@ -100,45 +100,21 @@ const Component: React.FC<ComponentProps & Bind> = ({ state, avatar }) => {
 
   return <Flex wrap={'wrap'} direction="row" gap="1rem" justify="center">
     <Button
-      backgroundColor={"white"} color={'black'}
-      _dark={{ backgroundColor: "black", color: 'white' }}
-      _hover={{
-        backgroundColor: "gray.100",
-        _dark: { backgroundColor: "gray.900" }
-      }}
       onClick={downloadSVG}>
       Download SVG
     </Button>
 
     <Button
-      backgroundColor={"white"} color={'black'}
-      _dark={{ backgroundColor: "black", color: 'white' }}
-      _hover={{
-        backgroundColor: "gray.100",
-        _dark: { backgroundColor: "gray.900" }
-      }}
       onClick={downloadPNG}>
       Download PNG
     </Button>
 
     <Button
-      backgroundColor={"white"} color={'black'}
-      _dark={{ backgroundColor: "black", color: 'white' }}
-      _hover={{
-        backgroundColor: "gray.100",
-        _dark: { backgroundColor: "gray.900" }
-      }}
       onClick={downloadHTML}>
       Download HTML
     </Button>
 
     <Button
-      backgroundColor={"white"} color={'black'}
-      _dark={{ backgroundColor: "black", color: 'white' }}
-      _hover={{
-        backgroundColor: "gray.100",
-        _dark: { backgroundColor: "gray.900" }
-      }}
       onClick={downloadJSON}>
       Download JSON
     </Button>

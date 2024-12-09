@@ -21,7 +21,7 @@ export type OptionKeys =
     | 'hatColor'
 
 export type Options =
-    Record<OptionKeys, Array<string>>;
+    Record<OptionKeys, Array<string> | number>;
 
 export type SelectedOptions =
-    Record<OptionKeys, Array<string>>;
+    Record<OptionKeys, Array<string> | number>;

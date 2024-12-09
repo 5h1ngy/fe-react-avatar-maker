@@ -6,16 +6,14 @@ import { Box, Flex } from '@chakra-ui/react';
 import { _parseKey } from '@/shared/utils';
 
 import { Bind } from "./container";
-import OptionList from "./component.optionList";
+import OptionList, { options } from "./component.optionList";
 import Download from "./component.download";
 
 const Component: React.FC<Bind> = ({ state }) => {
 
   const avatar = createAvatar(avataaars, {
-    ...(state.selectedOptions as Partial<Options & avataaars.Options>),
+    ...(state as Partial<Options & avataaars.Options>),
   });
-
-  console.log(state.selectedOptions)
 
   return <Flex
     direction={{ base: "column", xl: 'row', "2xl": 'row' }}
@@ -41,11 +39,11 @@ const Component: React.FC<Bind> = ({ state }) => {
     </Flex>
 
     <Flex wrap={'wrap'} gap={'3rem'} justifyContent={"center"}>
-      <OptionList title="Basic 🛠️" options={state.optionsBasic} />
-      <OptionList title="Styles 🎨" options={state.optionsStyle} />
-      <OptionList title="Colors 🌈" options={state.optionsColors} />
-      <OptionList title="Face 😊" options={state.optionsFace} />
-      <OptionList title="Clothes 👕" options={state.optionsClothes} />
+      <OptionList title="🛠️ Basic" options={options.optionsBasic} />
+      <OptionList title="🎨 Styles" options={options.optionsStyle} />
+      <OptionList title="🌈 Colors" options={options.optionsColors} />
+      <OptionList title="😊 Face" options={options.optionsFace} />
+      <OptionList title="👕 Clothes" options={options.optionsClothes} />
     </Flex>
 
   </Flex>;

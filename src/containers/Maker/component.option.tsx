@@ -9,7 +9,7 @@ import wicthContainer, { Bind } from "./container";
 
 interface ComponentProps {
   id: string,
-  list: Array<string>
+  list: Array<string | number>
 }
 
 const Component: React.FC<Bind & ComponentProps> = ({ actions, state, id, list }) => {
@@ -17,7 +17,7 @@ const Component: React.FC<Bind & ComponentProps> = ({ actions, state, id, list }
 
   const listCollection = createListCollection({
     items: list.map(element => ({
-      label: _parseKey(element),
+      label: typeof element === "string" ? _parseKey(element) : element,
       value: element
     }))
   });
@@ -31,7 +31,11 @@ const Component: React.FC<Bind & ComponentProps> = ({ actions, state, id, list }
 
   return <SelectRoot
     width={'10rem'} size={'sm'} collection={listCollection}
-    defaultValue={state.selectedOptions[id as OptionKeys] || undefined}
+    defaultValue={
+      Array.isArray(state[id as OptionKeys])
+        ? state[id as OptionKeys] as string[]
+        : undefined
+    }
     onValueChange={onTypeChange}
   >
 
@@ -42,7 +46,13 @@ const Component: React.FC<Bind & ComponentProps> = ({ actions, state, id, list }
 
     {/* Placeholder */}
     <SelectTrigger>
-      <SelectValueText placeholder={state.selectedOptions[id as OptionKeys]?.join(', ') || 'Select'} />
+      <SelectValueText
+        placeholder={
+          Array.isArray(state[id as OptionKeys])
+            ? (state[id as OptionKeys] as string[])?.join(', ') || 'Select'
+            : String(state[id as OptionKeys] || 'Select')
+        }
+      />
     </SelectTrigger>
 
     {/* Items */}
