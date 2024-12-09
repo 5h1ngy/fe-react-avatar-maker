@@ -17,20 +17,38 @@ const Component: React.FC<Bind> = ({ state }) => {
 
   console.log(state.selectedOptions)
 
-  return (
-    <Flex direction={'row'} wrap={"wrap"} gap={'2rem'}>
+  return <Flex
+    direction={{ base: "column", xl: 'row', "2xl": 'row' }}
+    gap={'2rem'}
+  >
 
-      {/* Avatar Box */}
-      <Box width='25rem' height='25rem' overflow='hidden' position={'sticky'} top={'20%'}
-        dangerouslySetInnerHTML={{ __html: avatar.toString() }}
-      />
-
-      <OptionList />
-
-      <Download avatar={avatar} />
-
+    {/* Avatar preview & Downloads button */}
+    <Flex
+      position="relative" direction={"column"}
+      wrap={'wrap'} gap={'2rem'}
+      alignContent={{ base: "center", xl: 'start', "2xl": 'start' }}
+      justifyContent={{ base: "center", xl: 'start', "2xl": 'start' }}
+    >
+      <Flex direction={"column"} gap={'2rem'}
+        position={{ base: "unset", xl: 'sticky', "2xl": 'sticky' }} top={'20%'}
+        alignItems={{ base: "center", xl: 'start', "2xl": 'start' }}
+      >
+        <Box dangerouslySetInnerHTML={{ __html: avatar.toString() }}
+          width='25rem' height='25rem' overflow='hidden'
+        />
+        <Download avatar={avatar} />
+      </Flex>
     </Flex>
-  );
+
+    <Flex wrap={'wrap'} gap={'3rem'} justifyContent={"center"}>
+      <OptionList title="Basic 🛠️" options={state.optionsBasic} />
+      <OptionList title="Styles 🎨" options={state.optionsStyle} />
+      <OptionList title="Colors 🌈" options={state.optionsColors} />
+      <OptionList title="Face 😊" options={state.optionsFace} />
+      <OptionList title="Clothes 👕" options={state.optionsClothes} />
+    </Flex>
+
+  </Flex>;
 };
 
 export default Component;

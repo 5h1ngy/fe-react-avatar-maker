@@ -3,7 +3,7 @@ import { Flex, Text } from '@chakra-ui/react';
 
 import { _parseKey } from '@/shared/utils';
 
-import withContainer, { Bind } from "./container";
+import withContainer from "./container";
 import Option from "./component.option";
 
 interface SectionProps {
@@ -11,34 +11,24 @@ interface SectionProps {
   options: Record<string, string[]>;
 }
 
-const OptionsSection: React.FC<SectionProps> = ({ title, options }) => (
-  <Flex direction={'column'} gapY={"1rem"} maxWidth={'40rem'}>
-    <Text textStyle="xl">{title}</Text>
-    <Flex
-      wrap={"wrap"}
-      gap={"1rem"}
-      padding={'1.5rem'}
-      borderRadius={'10px'}
-      borderWidth="1px"
-      backgroundColor={"white"}
-      _dark={{ backgroundColor: "black" }}
-      justifyContent={'center'}
+const Component: React.FC<SectionProps> = ({ title, options }) =>
+  <Flex direction={'column'} gapY={"1rem"} maxWidth={'35rem'}>
+
+    <Text textStyle="xl">
+      {title}
+    </Text>
+
+    <Flex wrap={"wrap"}
+      gap={"1rem"} padding={'1rem'}
+      borderRadius={'10px'} borderWidth="1px"
+      backgroundColor={"white"} _dark={{ backgroundColor: "black" }}
+      justifyContent={{ base: "start", xl: 'center', "2xl": 'center' }}
     >
       {Object.entries(options).map(([attribute, values]) =>
         Array.isArray(values) && <Option key={crypto.randomUUID()} id={attribute} list={values} />
       )}
     </Flex>
-  </Flex>
-);
 
-const Component: React.FC<Bind> = ({ state }) => (
-  <Flex wrap={'wrap'} gap={'1rem'}  width={'60%'} >
-    <OptionsSection title="Basic" options={state.optionsBasic} />
-    <OptionsSection title="Styles" options={state.optionsStyle} />
-    <OptionsSection title="Colors" options={state.optionsColors} />
-    <OptionsSection title="Face" options={state.optionsFace} />
-    <OptionsSection title="Clothes" options={state.optionsClothes} />
   </Flex>
-);
 
 export default withContainer(Component);

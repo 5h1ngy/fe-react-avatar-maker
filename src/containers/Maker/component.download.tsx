@@ -98,11 +98,50 @@ const Component: React.FC<ComponentProps & Bind> = ({ state, avatar }) => {
     URL.revokeObjectURL(url);
   };
 
-  return <Flex direction="row" gap="1rem" justify="center" marginTop="2rem">
-    <Button onClick={downloadSVG}>Download SVG</Button>
-    <Button onClick={downloadPNG}>Download PNG</Button>
-    <Button onClick={downloadHTML}>Download HTML</Button>
-    <Button onClick={downloadJSON}>Download JSON</Button>
+  return <Flex wrap={'wrap'} direction="row" gap="1rem" justify="center">
+    <Button
+      backgroundColor={"white"} color={'black'}
+      _dark={{ backgroundColor: "black", color: 'white' }}
+      _hover={{
+        backgroundColor: "gray.100",
+        _dark: { backgroundColor: "gray.900" }
+      }}
+      onClick={downloadSVG}>
+      Download SVG
+    </Button>
+
+    <Button
+      backgroundColor={"white"} color={'black'}
+      _dark={{ backgroundColor: "black", color: 'white' }}
+      _hover={{
+        backgroundColor: "gray.100",
+        _dark: { backgroundColor: "gray.900" }
+      }}
+      onClick={downloadPNG}>
+      Download PNG
+    </Button>
+
+    <Button
+      backgroundColor={"white"} color={'black'}
+      _dark={{ backgroundColor: "black", color: 'white' }}
+      _hover={{
+        backgroundColor: "gray.100",
+        _dark: { backgroundColor: "gray.900" }
+      }}
+      onClick={downloadHTML}>
+      Download HTML
+    </Button>
+
+    <Button
+      backgroundColor={"white"} color={'black'}
+      _dark={{ backgroundColor: "black", color: 'white' }}
+      _hover={{
+        backgroundColor: "gray.100",
+        _dark: { backgroundColor: "gray.900" }
+      }}
+      onClick={downloadJSON}>
+      Download JSON
+    </Button>
   </Flex>
 }
 export default withContainer(Component);
