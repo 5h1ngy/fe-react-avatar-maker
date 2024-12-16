@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import { v4 as uuidv4 } from 'uuid';
 
 import { Flex } from "@chakra-ui/react"
 import { Spacer } from "@chakra-ui/react"
@@ -28,7 +29,7 @@ export default function Component(props: ComponentProps) {
             <Logo />
 
             {navbarItems.map(item => (
-                <NavLink key={crypto.randomUUID()} to={item.value} end>
+                <NavLink key={uuidv4()} to={item.value} end>
                     <Text textStyle="xl" fontWeight="bold">{item.label}</Text>
                 </NavLink>
             ))}
@@ -44,7 +45,7 @@ export default function Component(props: ComponentProps) {
     const Body: React.FC = () => <Flex direction={"column"} zIndex={'5'} marginTop={'4.8rem'}
         position={'relative'}
         paddingX={{ base: "5%", sm: "4rem", md: "4rem", lg: '10%', xl: '10%', "2xl": '10%' }} gap={'3rem'}
-        paddingY={'4rem'}
+        paddingY={'3rem'}
         minHeight={'98.2vh'}
         borderYWidth="1px"
         backgroundColor={"gray.100"} _dark={{ backgroundColor: "gray.900" }}

@@ -39,15 +39,13 @@
     ]
   },
   "scripts": {
-    "mock": "vite --host 0.0.0.0 --port 5173 --mode mock",
-    "dev": "vite --host 0.0.0.0 --port 5173 --mode dev",
-    "build": "tsc -b && vite build",
-    "start": "vite preview",
-    "storybook": "storybook dev -p 6006 --no-open",
-    "preview": "storybook build",
-    "docs": "typedoc",
-    "lint": "eslint .",
-    "clean": "rm -rfdv dist node_modules"
+    "start:mock": "vite --host 0.0.0.0 --port 5173 --mode mock",
+    "start:dev": "vite --host 0.0.0.0 --port 5173 --mode dev",
+    "start:prod": "vite preview --port 5174 --mode prod --outDir build/app",
+    "build:prod": "tsc -b && vite build --mode prod --outDir build/app",
+    "start:storybook": "storybook dev -p 6006 --no-open",
+    "build:storybook": "storybook build --output-dir build/storybook",
+    "clean": "rm -rfdv build node_modules"
   },
   "devDependencies": {
     "@chakra-ui/react": "^3.2.2",
@@ -95,6 +93,7 @@
     "storybook": "^8.4.6",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.16.0",
+    "uuid": "^11.0.3",
     "vite": "^6.0.1",
     "vite-tsconfig-paths": "^5.1.3"
   }

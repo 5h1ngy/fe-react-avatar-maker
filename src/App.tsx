@@ -9,10 +9,9 @@ import store from '@/store';
 import routes from '@/routes'
 
 const App: React.FC = () => {
+    console.warn("env", import.meta.env);
 
     const imgUrl = new URL('/public/logo.png', import.meta.url).href
-
-    console.warn("env", import.meta.env);
 
     return <Provider store={store}>
         <ThemeProvider>
@@ -25,6 +24,7 @@ const App: React.FC = () => {
                 </Helmet>
             </HelmetProvider>
             <RouterProvider router={createBrowserRouter(routes, {
+                basename: import.meta.env.VITE_BASENAME,
                 // https://reactrouter.com/en/main/routers/create-browser-router#optsfuture
                 future: {
                     v7_fetcherPersist: true,

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, IconButton, Text } from '@chakra-ui/react';
 import { Result } from '@dicebear/core';
+import { BsFiletypeSvg, BsFiletypePng, BsFiletypeHtml, BsFiletypeJson } from "react-icons/bs";
 
 import { _parseKey } from '@/shared/utils';
-import { Button } from '@/components/Chakra/button';
 
 import withContainer, { Bind } from "./container";
 
@@ -98,26 +98,46 @@ const Component: React.FC<ComponentProps & Bind> = ({ state, avatar }) => {
     URL.revokeObjectURL(url);
   };
 
-  return <Flex wrap={'wrap'} direction="row" gap="1rem" justify="center">
-    <Button
-      onClick={downloadSVG}>
-      Download SVG
-    </Button>
+  return <Flex direction="column" gap="1rem" justify="center" align={'center'}>
+    <Text textStyle="xl" fontWeight="bold">
+      Download
+    </Text>
 
-    <Button
-      onClick={downloadPNG}>
-      Download PNG
-    </Button>
+    <Flex wrap={'wrap'} direction="row" gap="1rem" justify="center" align={'center'}>
 
-    <Button
-      onClick={downloadHTML}>
-      Download HTML
-    </Button>
+      <IconButton
+        aria-label="Search database"
+        variant="surface"
+        size={"lg"}
+        onClick={downloadSVG}>
+        <BsFiletypeSvg />
+      </IconButton>
 
-    <Button
-      onClick={downloadJSON}>
-      Download JSON
-    </Button>
+      <IconButton
+        aria-label="Search database"
+        variant="surface"
+        size={"lg"}
+        onClick={downloadPNG}>
+        <BsFiletypePng />
+      </IconButton>
+
+      <IconButton
+        aria-label="Search database"
+        variant="surface"
+        size={"lg"}
+        onClick={downloadHTML}>
+        <BsFiletypeHtml />
+      </IconButton>
+
+      <IconButton
+        aria-label="Search database"
+        variant="surface"
+        size={"lg"}
+        onClick={downloadJSON}>
+        <BsFiletypeJson />
+      </IconButton>
+
+    </Flex>
   </Flex>
 }
 export default withContainer(Component);

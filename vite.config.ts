@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => {
     : undefined; // Usa undefined invece di null per compatibilità con Vite
 
   return {
+    base: process.env.VITE_BASENAME,
     plugins: [react(), tsconfigPaths()],
     server: {
       host: "0.0.0.0", // Consente connessioni da qualsiasi host

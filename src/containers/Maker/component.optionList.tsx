@@ -1,10 +1,10 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { _parseKey } from '@/shared/utils';
 import { popularColors, hairColors, skinTones, clothingColors } from '@/shared/colors';
 
-import withContainer from "./container";
 import Option from "./component.option";
 
 export const options = {
@@ -59,8 +59,8 @@ interface ComponentProps {
   options: Record<string, string[] | number[]>;
 }
 
-const Component: React.FC<ComponentProps> = ({ title, options }) =>
-  <Flex direction={'column'} gapY={"1rem"} width={'30rem'}>
+const Component = forwardRef<HTMLDivElement, ComponentProps>(({ title, options }, ref) =>
+  <Flex direction={'column'} gapY={"1rem"} width={'30rem'} ref={ref}>
 
     <Text textStyle="xl" fontWeight="bold">
       {title}
@@ -75,15 +75,16 @@ const Component: React.FC<ComponentProps> = ({ title, options }) =>
       {Object.entries(options).map(([attribute, values]) =>
         Array.isArray(values) &&
         values.every(item => typeof item === 'string') &&
-        <Option key={crypto.randomUUID()} id={attribute} list={values} />
+        <Option key={uuidv4()} id={attribute} list={values} />
       )}
       {Object.entries(options).map(([attribute, values]) =>
         Array.isArray(values) &&
         values.every(item => typeof item === 'number') &&
-        <Option key={crypto.randomUUID()} id={attribute} list={values} />
+        <Option key={uuidv4()} id={attribute} list={values} />
       )}
     </Flex>
 
   </Flex>
+);
 
-export default withContainer(Component);
+export default Component;

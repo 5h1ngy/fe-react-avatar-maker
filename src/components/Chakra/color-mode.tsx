@@ -8,6 +8,7 @@ import { forwardRef } from "react";
 import { HiSun, HiMoon } from "react-icons/hi2";
 import { LuMoon, LuSun } from "react-icons/lu";
 import { Tabs } from "@chakra-ui/react"
+import { v4 as uuidv4 } from 'uuid';
 
 // Interfaccia che estende le proprietà di ThemeProvider
 export interface ColorModeProviderProps extends ThemeProviderProps { }
@@ -63,7 +64,7 @@ export const ColorModeButtonExtended = function ColorModeButtonExtended(props: C
     // Usa ClientOnly per assicurarsi che il componente venga renderizzato solo sul client
     <ClientOnly fallback={<Skeleton boxSize="8" />}>
 
-      <Tabs.Root key={crypto.randomUUID()} defaultValue={colorMode} variant={variant} size={size} onValueChange={toggleColorMode}
+      <Tabs.Root key={uuidv4()} defaultValue={colorMode} variant={variant} size={size} onValueChange={toggleColorMode}
       // 'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink' | 'accent'
       // colorPalette={'red'}
       >
