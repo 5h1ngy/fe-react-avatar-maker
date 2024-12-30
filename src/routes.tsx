@@ -10,7 +10,7 @@ const routes: RouteObject[] = [
         id: "root",
         path: "/",
         element: withDynamicImport('Simple', <Loading />).pages({
-            logo: "/logo.png",
+            logo: `${import.meta.env.VITE_BASENAME}/logo.png`,
             children: <Outlet />,
             navbarItems: [
                 { icon: <HiHome />, label: "About", value: '/about' },
